@@ -1,29 +1,35 @@
 public class Student {
-    // 1. Attributes (The data)
     private String name;
     private String ID;
+    // 1. Add the array attribute
+    private Module[] modules; 
 
-    // 2. Constructor (The creator)
     public Student(String name, String ID) {
         this.name = name;
         this.ID = ID;
+        // 2. Initialize the array with 6 empty slots
+        this.modules = new Module[6]; 
     }
 
-    // 3. Getters and Setters (The gatekeepers)
-    public String getName() {
-        return this.name;
+    // 2. Method to add a module into an empty slot
+    public void addModule(Module m) {
+        for (int i = 0; i < modules.length; i++) {
+            if (modules[i] == null) { // Find the first "empty" slot
+                modules[i] = m;
+                System.out.println("Module added successfully!");
+                return; // Stop looking once we've added it
+            }
+        }
+        System.out.println("No space left in the array!");
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    // 4. The Main Method (The "Start" button)
-    public static void main(String[] args) {
-        Student s1 = new Student("Alex", "w12345");
-        System.out.println(s1.getName()); // Prints: Alex
-        
-        s1.setName("Bob");
-        System.out.println(s1.getName()); // Prints: Bob
+    // 3. Method to check passes for all modules
+    public void showPass() {
+        for (int i = 0; i < modules.length; i++) {
+            if (modules[i] != null) { // Only check if the slot isn't empty
+                boolean passed = modules[i].pass();
+                System.out.println("Module " + modules[i].getModuleCode() + " Pass: " + passed);
+            }
+        }
     }
 }
