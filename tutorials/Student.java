@@ -2,13 +2,13 @@ public class Student {
     private String name;
     private String ID;
     // 1. Add the array attribute
-    private Module[] modules; 
+    private Module[] modules;
 
     public Student(String name, String ID) {
         this.name = name;
         this.ID = ID;
         // 2. Initialize the array with 6 empty slots
-        this.modules = new Module[6]; 
+        this.modules = new Module[6];
     }
 
     // 2. Method to add a module into an empty slot
@@ -34,15 +34,30 @@ public class Student {
     }
 
     public static void main(String[] args) {
-    Student s1 = new Student("Alex", "w123");
-    
-    // Create a module
-    Module m1 = new Module("CS101", 50, 60);
-    
-    // Give the module to the student
-    s1.addModule(m1);
-    
-    // Check if they passed their modules
-    s1.showPass();
-}
+        // 1. Create the first Student (Alex)
+        Student s1 = new Student("Alex", "W1001");
+
+        // 2. Create modules for Alex and add them
+        // Passing marks: (50 + 60) / 2 = 55 (Pass)
+        Module m1 = new Module("CS101", 50.0, 60.0);
+        // Failing marks: (20 + 30) / 2 = 25 (Fail)
+        Module m2 = new Module("MATH10", 20.0, 30.0);
+
+        s1.addModule(m1);
+        s1.addModule(m2);
+
+        // 3. Create a second Student (Bob)
+        Student s2 = new Student("Bob", "W1002");
+
+        // 4. Create modules for Bob and add them
+        Module m3 = new Module("ENG20", 80.0, 90.0); // Pass
+        s2.addModule(m3);
+
+        // 5. Final Report: Check everyone's results
+        System.out.println("--- ALEX'S REPORT ---");
+        s1.showPass();
+
+        System.out.println("\n--- BOB'S REPORT ---");
+        s2.showPass();
+    }
 }
