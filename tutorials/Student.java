@@ -32,4 +32,17 @@ public class Student {
             }
         }
     }
+
+    public static void main(String[] args) {
+    Student s1 = new Student("Alex", "w123");
+    
+    // Create a module
+    Module m1 = new Module("CS101", 50, 60);
+    
+    // Give the module to the student
+    s1.addModule(m1);
+    
+    // Check if they passed their modules
+    s1.showPass();
+}
 }
